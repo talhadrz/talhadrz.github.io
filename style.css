@@ -3,14 +3,15 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    background: linear-gradient(135deg, #fdfd96, #b2fba5, #ffb3ba, #bae1ff);
     color: #333;
+    animation: bodyColors 10s infinite alternate;
 }
 
 header {
     text-align: center;
-    background: linear-gradient(90deg, #ff6f61, #ffab40);
-    color: white;
+    background: linear-gradient(90deg, #ffcccb, #fffacd, #c1f4c5);
+    color: #333;
     padding: 20px 10px;
     position: relative;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -19,6 +20,7 @@ header {
 header p {
     font-size: 1.2em;
     margin: 10px 0 0;
+    color: #555;
 }
 
 .profile-pic {
@@ -28,14 +30,14 @@ header p {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    border: 3px solid white;
+    border: 3px solid #fffacd;
 }
 
 h1 {
     margin: 0;
     font-size: 2.5em;
-    color: #ffeb3b;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    color: #333;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7);
 }
 
 main {
@@ -46,8 +48,8 @@ main {
 
 section {
     margin-bottom: 30px;
-    background: linear-gradient(145deg, #2196f3, #21cbf3);
-    color: white;
+    background: linear-gradient(145deg, #b2fba5, #fdfd96);
+    color: #333;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -57,7 +59,7 @@ section {
 section h2 {
     margin-top: 0;
     font-size: 1.8em;
-    color: #ffeb3b;
+    color: #ff6f61;
 }
 
 ul {
@@ -70,7 +72,7 @@ ul li {
 }
 
 ul li a {
-    color: #ffeb3b;
+    color: #ff6f61;
     text-decoration: none;
     font-weight: bold;
 }
@@ -82,8 +84,8 @@ ul li a:hover {
 footer {
     text-align: center;
     padding: 15px 10px;
-    background: linear-gradient(90deg, #673ab7, #512da8);
-    color: white;
+    background: linear-gradient(90deg, #ffb3ba, #bae1ff, #b2fba5);
+    color: #333;
     margin-top: 30px;
     font-size: 0.9em;
     box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
@@ -93,27 +95,21 @@ footer p {
     margin: 0;
 }
 
-body, section, footer, header {
-    animation: backgroundAnimation 10s infinite alternate;
-}
-
-@keyframes backgroundAnimation {
+@keyframes bodyColors {
     0% {
-        background-color: #ff9a9e;
+        background-color: #fdfd96;
     }
     25% {
-        background-color: #fad0c4;
+        background-color: #b2fba5;
     }
     50% {
-        background-color: #21cbf3;
+        background-color: #ffb3ba;
     }
     75% {
-        background-color: #ffeb3b;
+        background-color: #bae1ff;
     }
     100% {
-        background-color: #ff6f61;
+        background-color: #fdfd96;
     }
 }
 
-
-  
