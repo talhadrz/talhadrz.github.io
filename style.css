@@ -27,9 +27,11 @@ h1, h2 {
 }
 
 ul {
-    list-style-type:nano;
-    padding: 0;
+    list-style-type: none; /* Liste numaralarını kaldırır */
+    padding: 0;            /* Varsayılan boşlukları kaldırır */
+    margin: 0;             /* Varsayılan boşlukları kaldırır */
 }
+
 
     ul li {
         margin-bottom: 10px;
