@@ -20,6 +20,7 @@ main {
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Tüm ana içerik yatayda ortalanır */
 }
 
 h1, h2 {
@@ -28,18 +29,12 @@ h1, h2 {
 
 ul {
     list-style-type: none; /* Liste numaralarını kaldırır */
-    padding: 0;            /* Varsayılan boşlukları kaldırır */
-    margin: 0;             /* Varsayılan boşlukları kaldırır */
+    padding: 0;
 }
 
-
-    ul li {
-        margin-bottom: 10px;
-        text-align: center; /* Baþlýk ve linklerin ortalanmasýný saðlar */
-        max-width: 400px; /* Kapsayýcýnýn geniþliðini sýnýrlama */
-        margin: 0 auto; /* Yalnýzca yatayda ortalama */
-        max-width: 500px;
-    }
+ul li {
+    margin: 10px 0;
+}
 
 a {
     color: #4CAF50;
@@ -60,6 +55,7 @@ button {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-top: 20px; /* Butona üstten boşluk ekler */
 }
 
 button:hover {
@@ -72,4 +68,3 @@ footer {
     font-size: 0.9em;
     color: #777;
 }
-
