@@ -32,11 +32,11 @@ ul {
 }
 
     ul li {
-        margin-bottom: 30px;
+        margin-bottom: 10px;
         text-align: center; /* Baþlýk ve linklerin ortalanmasýný saðlar */
         max-width: 400px; /* Kapsayýcýnýn geniþliðini sýnýrlama */
         margin: 0 auto; /* Yalnýzca yatayda ortalama */
-        text-size-adjust = 100%;
+        max-width: 500px;
     }
 
 a {
