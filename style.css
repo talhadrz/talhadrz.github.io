@@ -27,15 +27,15 @@ h1, h2 {
 }
 
 ul {
-    list-style-type: cambodian;
+    list-style-type:nano;
     padding: 0;
 }
 
     ul li {
         margin-bottom: 10px;
-        text-align: center; /* Başlık ve linklerin ortalanmasını sağlar */
-        max-width: 400px; /* Kapsayıcının genişliğini sınırlama */
-        margin: 0 auto; /* Yalnızca yatayda ortalama */
+        text-align: center; /* BaÃ¾lÃ½k ve linklerin ortalanmasÃ½nÃ½ saÃ°lar */
+        max-width: 400px; /* KapsayÃ½cÃ½nÃ½n geniÃ¾liÃ°ini sÃ½nÃ½rlama */
+        margin: 0 auto; /* YalnÃ½zca yatayda ortalama */
         max-width: 500px;
     }
 
