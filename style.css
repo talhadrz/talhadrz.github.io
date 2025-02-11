@@ -1,101 +1,54 @@
-/* Genel Stil Ayarları */
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
-  color: #333;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
 }
 
-header {
-  background-color: #4CAF50;
-  color: white;
-  text-align: center;
-  padding: 20px;
-}
-
-header h1 {
-  margin: 0;
-  font-size: 2.5em;
-}
-
-header p {
-  font-size: 1.2em;
-  margin-top: 10px;
-}
-
-/* Ana İçerik */
-main {
-  padding: 20px;
-}
-
-section {
-  margin-bottom: 30px;
-}
-
-h2 {
-  font-size: 2em;
-  color: #333;
-  margin-bottom: 20px;
-}
-
-ul {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-li {
-  background-color: white;
-  padding: 15px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-h3 {
-  font-size: 1.8em;
-  color: #4CAF50;
-  margin-bottom: 10px;
+h1 {
+    color: #333;
 }
 
 p {
-  font-size: 1em;
-  margin-bottom: 10px;
+    max-width: 600px;
+    margin: 10px auto;
+    color: #555;
 }
 
-a {
-  font-size: 1em;
-  color: #007BFF;
-  text-decoration: none;
+.links {
+    margin-top: 20px;
 }
 
-a:hover {
-  text-decoration: underline;
+.links a {
+    display: block;
+    margin: 10px auto;
+    text-decoration: none;
+    color: white;
+    background-color: #007bff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    width: 200px;
 }
 
-/* Düğme */
-button {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 1.2em;
-  cursor: pointer;
-  border-radius: 5px;
+.links a:hover {
+    background-color: #0056b3;
 }
 
-button:hover {
-  background-color: #45a049;
+.button {
+    margin-top: 30px;
 }
 
-/* Alt Bilgi */
-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #333;
-  color: white;
+.button button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-footer p {
-  margin: 0;
+.button button:hover {
+    background-color: #218838;
 }
