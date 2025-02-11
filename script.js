@@ -1,88 +1,107 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
-let box = 20;
-let snake = [{ x: 9 * box, y: 9 * box }];
-let direction = 'RIGHT';
-let food = {
-    x: Math.floor(Math.random() * (canvas.width / box)) * box,
-    y: Math.floor(Math.random() * (canvas.height / box)) * box
+let dino = {
+    x: 50,
+    y: 300,
+    width: 40,
+    height: 40,
+    gravity: 1,
+    jumpPower: 15,
+    velocityY: 0,
+    isJumping: false
 };
 
-document.addEventListener('keydown', directionControl);
+let obstacles = [];
+let frame = 0;
+let score = 0;
 
-function directionControl(event) {
-    if (event.keyCode == 37 && direction != 'RIGHT') {
-        direction = 'LEFT';
-    } else if (event.keyCode == 38 && direction != 'DOWN') {
-        direction = 'UP';
-    } else if (event.keyCode == 39 && direction != 'LEFT') {
-        direction = 'RIGHT';
-    } else if (event.keyCode == 40 && direction != 'UP') {
-        direction = 'DOWN';
+document.addEventListener('keydown', function(event) {
+    if (event.code === 'Space' && !dino.isJumping) {
+        dino.isJumping = true;
+        dino.velocityY = -dino.jumpPower;
     }
+});
+
+function createObstacle() {
+    const obstacleHeight = Math.random() * 50 + 20; // Engelin yüksekliği
+    obstacles.push({
+        x: canvas.width,
+        y: 300 - obstacleHeight,
+        width: 20,
+        height: obstacleHeight
+    });
 }
 
-function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+function drawDino() {
+    ctx.fillStyle = 'green';
+    ctx.fillRect(dino.x, dino.y, dino.width, dino.height);
+}
 
-    for (let i = 0; i < snake.length; i++) {
-        ctx.fillStyle = (i === 0) ? 'green' : 'lightgreen';
-        ctx.fillRect(snake[i].x, snake[i].y, box, box);
-        ctx.strokeStyle = 'darkgreen';
-        ctx.strokeRect(snake[i].x, snake[i].y, box, box);
-    }
-
+function drawObstacles() {
     ctx.fillStyle = 'red';
-    ctx.fillRect(food.x, food.y, box, box);
-
-    let snakeX = snake[0].x;
-    let snakeY = snake[0].y;
-
-    if (direction === 'LEFT') snakeX -= box;
-    if (direction === 'UP') snakeY -= box;
-    if (direction === 'RIGHT') snakeX += box;
-    if (direction === 'DOWN') snakeY += box;
-
-    // Duvarlardan geçiş
-    if (snakeX < 0) {
-        snakeX = canvas.width - box;
-    } else if (snakeX >= canvas.width) {
-        snakeX = 0;
+    for (let obstacle of obstacles) {
+        ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
     }
-    if (snakeY < 0) {
-        snakeY = canvas.height - box;
-    } else if (snakeY >= canvas.height) {
-        snakeY = 0;
-    }
-
-    if (snakeX === food.x && snakeY === food.y) {
-        food = {
-            x: Math.floor(Math.random() * (canvas.width / box)) * box,
-            y: Math.floor(Math.random() * (canvas.height / box)) * box
-        };
-    } else {
-        snake.pop();
-    }
-
-    let newHead = { x: snakeX, y: snakeY };
-
-    // Kuyruğun üstünden geçiş
-    if (collision(newHead, snake)) {
-        // Eğer yılanın başı kuyruğun üstüne gelirse, kuyruğu silme
-        snake.pop();
-    }
-
-    snake.unshift(newHead);
 }
 
-function collision(head, array) {
-    for (let i = 1; i < array.length; i++) {
-        if (head.x === array[i].x && head.y === array[i].y) {
-            return true;
+function update() {
+    // Dinozorun zıplaması
+    if (dino.isJumping) {
+        dino.y += dino.velocityY;
+        dino.velocityY += dino.gravity;
+
+        if (dino.y >= 300) {
+            dino.y = 300;
+            dino.isJumping = false;
+            dino.velocityY = 0;
         }
     }
-    return false;
+
+    // Engellerin hareketi
+    for (let i = 0; i < obstacles.length; i++) {
+        obstacles[i].x -= 5; // Engellerin hızı
+
+        // Engeller ekrandan çıkınca sil
+        if (obstacles[i].x + obstacles[i].width < 0) {
+            obstacles.splice(i, 1);
+            score++;
+            i--;
+        }
+    }
+
+    // Çarpışma kontrolü
+    for (let obstacle of obstacles) {
+        if (dino.x < obstacle.x + obstacle.width &&
+            dino.x + dino.width > obstacle.x &&
+            dino.y < obstacle.y + obstacle.height &&
+            dino.y + dino.height > obstacle.y) {
+            alert('Oyun Bitti! Skor: ' + score);
+            document.location.reload();
+        }
+    }
 }
 
-let game = setInterval(draw, 100);
+function drawScore() {
+    ctx.fillStyle = 'black';
+    ctx.font = '20px Arial';
+    ctx.fillText('Skor: ' + score, 10, 20);
+}
+
+function gameLoop() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawDino();
+    drawObstacles();
+    drawScore();
+    update();
+
+    // Engelleri belirli aralıklarla oluştur
+    if (frame % 100 === 0) {
+        createObstacle();
+    }
+
+    frame++;
+    requestAnimationFrame(gameLoop);
+}
+
+gameLoop();
