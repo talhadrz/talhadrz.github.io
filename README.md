@@ -1,1 +1,2 @@
 
+selam ben readme dosyasıyımm
